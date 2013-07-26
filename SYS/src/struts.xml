@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<package namespace="/" name="default" extends="struts-default">
+		<!-- global 全局跳转  -->
+		<global-results>
+			<result name="fail" type="redirect">/index.do</result>
+		</global-results>
+		
+		<!-- index -->
+		<action name="index" class="indexAction">
+        	<result name="index">/index.jsp</result>
+        	<result name="success" type="redirect">main.do</result>
+        	<result name="out" type="redirect">index.do</result>
+		</action>
+		
+		<!-- main -->
+		<action name="main" class="mainAction">
+        	<result name="index">/main/index.jsp</result>
+        	<result name="top">/main/top.jsp</result>
+        	<result name="left">/main/left.jsp</result>
+        	<result name="right">/main/right.jsp</result>
+        	<result name="error" type="redirect">index.do</result>
+		</action>
+		
+	</package>
+	<package namespace="/sys" name="sys" extends="default">
+		<!-- 拦截器 -->
+		<interceptors>
+			<interceptor name="interceptor" class="com.sys.web.struts2.BaseInterceptor" />
+			
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="interceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- diary -->
+		<action name="diary" class="diaryAction">
+        	<result name="insert">/main/diary/diary_add.jsp</result>
+        	<result name="list">/main/diary/diary_list.jsp</result>
+        	<interceptor-ref name="myInterceptorStack"/>
+		</action>
+		
+		<!-- kind -->
+		<action name="kind" class="kindAction">
+        	<result name="insert">/main/account/kind_add.jsp</result>
+        	<result name="list">/main/account/kind_list.jsp</result>
+        	<interceptor-ref name="myInterceptorStack"/>
+		</action>
+		
+		<!-- account -->
+		<action name="acc" class="accountAction">
+        	<result name="insert">/main/account/account_add.jsp</result>
+        	<result name="list">/main/account/account_list.jsp</result>
+        	<interceptor-ref name="myInterceptorStack"/>
+		</action>
+		
+		<!-- account table -->
+		<action name="table" class="accountTableAction">
+        	<result name="monthList">/main/account_table/monthList.jsp</result>
+        	<result name="countList">/main/account_table/countList.jsp</result>
+        	<interceptor-ref name="myInterceptorStack"/>
+		</action>
+		
+    </package>
+    
+	<package namespace="/admin" name="admin" extends="default">
+		<!-- module -->
+		<action name="module" class="moduleAction">
+        	<result name="index">/main/admin/module_index.jsp</result>
+        	<result name="add">/main/admin/module_add.jsp</result>
+        	<result name="list">/main/admin/module_list.jsp</result>
+		</action>
+		
+		<!-- rolse -->
+		<action name="rolse" class="rolseAction">
+        	<result name="index">/main/admin/rolse_index.jsp</result>
+        	<result name="add">/main/admin/rolse_add.jsp</result>
+        	<result name="list">/main/admin/rolse_list.jsp</result>
+		</action>
+		
+		<!-- userinfo -->
+		<action name="userinfo" class="userinfoAction">
+        	<result name="index">/main/admin/userinfo_index.jsp</result>
+        	<result name="add">/main/admin/userinfo_add.jsp</result>
+        	<result name="list">/main/admin/userinfo_list.jsp</result>
+		</action>
+		
+		<!-- user -->
+		<action name="user" class="userAction">
+        	<result name="index">/main/admin/user_index.jsp</result>
+        	<result name="add">/main/admin/user_add.jsp</result>
+        	<result name="pwd">/main/admin/user_pwd.jsp</result>
+        	<result name="list">/main/admin/user_list.jsp</result>
+        	<result name="success">/common/success.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package namespace="/image" name="image" extends="default">
+		<!-- images -->
+		<action name="images" class="imagesAction">
+        	<result name="index">/main/image/image_index.jsp</result>
+        	<result name="add">/main/image/image_add.jsp</result>
+        	<result name="add2">/main/image/image_add2.jsp</result>
+        	<result name="list">/main/image/image_list.jsp</result>
+        	<result name="show">/main/image/image_show.jsp</result>
+        	<result name="result">/common/result.jsp</result>
+		</action>
+		<action name="imgtype" class="imageTypeAction">
+        	<result name="index">/main/image/type_index.jsp</result>
+        	<result name="add">/main/image/type_add.jsp</result>
+        	<result name="list">/main/image/type_list.jsp</result>
+		</action>
+		
+		<action name="upload" class="imageUploadAction">
+        	<result name="index">/main/upload/index.jsp</result>
+        	<result name="success">/main/upload/upload.jsp</result>
+		</action>
+	</package>
+	
+</struts>

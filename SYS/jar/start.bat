@@ -1,0 +1,2 @@
+java -Djava.net.preferIPv4Stack=true -classpath borland.jar,commons-codec-1.3.jar,commons-dbcp-1.2.2.jar,commons-digester-1.6.jar,commons-httpclient-3.1.jar,commons-logging-1.1.1.jar,commons-pool-1.5.2.jar,httpclient-4.0.1.jar,ibatis-2.3.2.715.jar,ibatis-common-2.jar,ibatis-dao-2.jar,jsf-api.jar,jsf-impl.jar,jspSmartUpload.jar,jstl-1.2.jar,log4j-1.2.15.jar,mysql.jar,ognl-2.6.11.jar,servlet-api.jar,spring.jar,spring-aspects.jar,standard.jar,sys_0.1.jar	com.sys.applet.Main
+pause

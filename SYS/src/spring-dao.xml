@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="no">
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/sys?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<!-- 初始化连接 -->
+        <property name="initialSize">
+            <value>20</value>
+        </property>
+        <!-- 最大连接数量 -->
+        <property name="maxActive">
+            <value>60</value>
+        </property>
+        <!-- 最大空闲连接 -->
+        <property name="maxIdle">
+            <value>30</value>
+        </property>
+        <!-- 最小空闲连接 -->
+        <property name="minIdle">
+            <value>10</value>
+       </property>
+        <!-- 是否在自动回收超时连接的时候打印连接的超时错误 -->
+        <property name="logAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 是否自动回收超时连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 超时时间(以s为单位) -->
+        <property name="removeAbandonedTimeout">
+            <value>30</value>
+        </property>
+        <!-- 超时等待时间（以ms为单位） -->
+        <property name="maxWait">
+            <value>1000</value>
+        </property>
+	</bean>
+	
+	<!-- dataSource -->
+	<bean id="dataSource2"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/gzb?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<!-- 初始化连接 -->
+        <property name="initialSize">
+            <value>20</value>
+        </property>
+        <!-- 最大连接数量 -->
+        <property name="maxActive">
+            <value>60</value>
+        </property>
+        <!-- 最大空闲连接 -->
+        <property name="maxIdle">
+            <value>30</value>
+        </property>
+        <!-- 最小空闲连接 -->
+        <property name="minIdle">
+            <value>10</value>
+       </property>
+        <!-- 是否在自动回收超时连接的时候打印连接的超时错误 -->
+        <property name="logAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 是否自动回收超时连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 超时时间(以s为单位) -->
+        <property name="removeAbandonedTimeout">
+            <value>600</value>
+        </property>
+        <!-- 超时等待时间（以ms为单位） -->
+        <property name="maxWait">
+            <value>1000</value>
+        </property>
+        <!-- 连接是否可用的验证语句 -->
+        <property name="validationQuery">
+        	<value>SELECT 1</value>
+        </property>
+        <!-- 指明是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个 -->
+        <property name="testOnBorrow">
+        	<value>false</value>
+        </property>
+        <!-- 空闲时是否进行验证，检查对象是否有效，默认为false  -->
+        <property name="testWhileIdle">
+        	<value>true</value>
+        </property>
+        <!-- 以毫秒表示空闲对象回收器由运行间隔。值为负数时表示不运行空闲对象回收器。该值最好小于 minEvictableIdleTimeMillis 值  -->
+        <property name="timeBetweenEvictionRunsMillis">
+        	<value>1800000</value>
+        </property>
+        <!-- 被空闲对象回收器回收前在池中保持空闲状态的最小时间, 毫秒表示。该值最好小于DB中的 wait_timeout 值  -->
+        <property name="minEvictableIdleTimeMillis">
+        	<value>3600000</value>
+        </property>
+	</bean>
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource">
+		</property>
+	</bean>
+	
+	<!-- 配置Jdbc模板  -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	   <property name="dataSource" ><ref bean="dataSource"/> </property>
+	</bean>
+	
+	<bean id="accountDao" class="com.sys.spring.dao.account.impl.AccountDaoImpl">
+	   <property name="jdbc" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<bean id="incomeDao" class="com.sys.spring.dao.account.impl.IncomeDaoImpl">
+	   <property name="jdbc" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<bean id="diaryDao" class="com.sys.spring.dao.account.impl.DiaryDaoImpl">
+	   <property name="jdbc" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<bean id="kindDao" class="com.sys.spring.dao.account.impl.KindDaoImpl">
+	   <property name="jdbc" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<!-- ibatis配置 
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+       <property name="configLocation"><value>classpath:ibatisSqlMapConfig.xml</value></property>
+    </bean>
+    
+	<bean id="userDao" class="com.sys.spring.dao.ibatisImpl.UserDaoImpl">
+	   <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+    
+	<bean id="accountDao" class="com.sys.spring.dao.ibatisImpl.AccountDaoImpl">
+	   <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+	<bean id="incomeDao" class="com.sys.spring.dao.ibatisImpl.IncomeDaoImpl">
+	   <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+	<bean id="diaryDao" class="com.sys.spring.dao.ibatisImpl.DiaryDaoImpl">
+	   <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+	<bean id="kindDao" class="com.sys.spring.dao.ibatisImpl.KindDaoImpl">
+	   <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+	-->
+	
+	<!-- 配置Jdbc模板  -->
+	<bean id="jdbcTemplate2" class="org.springframework.jdbc.core.JdbcTemplate">
+	   <property name="dataSource" ><ref bean="dataSource2"/> </property>
+	</bean>
+	
+	<!-- 用户信息 -->
+	<bean id="userDao" class="com.sys.spring.dao.admin.impl.UserDaoImpl">
+	   <property name="jdbc" ><ref bean="jdbcTemplate2"/> </property>
+	</bean>
+	
+	<!-- 模块管理 -->
+	<bean id="modDao" class="com.sys.spring.dao.admin.impl.ModuleDaoImpl">
+	   <property name="jdbc" ><ref bean="jdbcTemplate2"/> </property>
+	</bean>
+	
+	<!-- 角色管理 -->
+	<bean id="rolseDao" class="com.sys.spring.dao.admin.impl.RolseDaoImpl">
+	   <property name="jdbc" ><ref bean="jdbcTemplate2"/> </property>
+	</bean>
+	
+	<!-- 角色管理 -->
+	<bean id="userinfoDao" class="com.sys.spring.dao.admin.impl.UserinfoDaoImpl">
+	   <property name="jdbc" ><ref bean="jdbcTemplate2"/> </property>
+	</bean>
+	
+	<!-- 图片类型 -->
+	<bean id="imgtypeDao" class="com.sys.spring.dao.img.impl.ImageTypeDaoImpl">
+	   <property name="jdbc" ><ref bean="jdbcTemplate2"/> </property>
+	</bean>
+	
+	<!-- 图片 -->
+	<bean id="imagesDao" class="com.sys.spring.dao.img.impl.ImagesDaoImpl">
+	   <property name="jdbc" ><ref bean="jdbcTemplate2"/> </property>
+	</bean>
+</beans>

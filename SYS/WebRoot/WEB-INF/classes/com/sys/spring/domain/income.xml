@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="income">
+
+	<typeAlias alias="income" type="com.sys.spring.domain.Income" />
+	
+	<resultMap id="incomeMap" class="income">
+		<result property="id" column="id"/>
+		<result property="uid" column="uid"/>
+		<result property="title" column="title"/>
+		<result property="money" column="money"/>
+		
+		<result property="kindId" column="kindId"/>
+		<result property="kindTitle" column="kindTitle"/>
+		<result property="datetime" column="datetime"/>
+		<result property="userId" column="userId"/>
+		<result property="userName" column="userName"/>
+	</resultMap>
+	
+	<insert id="saveIncome" parameterClass="income">
+		INSERT INTO income(uid,title,money,kindId,kindTitle,datetime,userId,userName)
+		 	VALUES (#uid#,#title#,#money#,#kindId#,#kindTitle#,#datetime#,#userId#,#userName#)
+	</insert>
+	
+	<update id="updateIncome" parameterClass="income">
+		update income set uid = #uid#
+		<isNotNull prepend="," property="title">
+			title = #title#
+		</isNotNull>
+		<isNotNull prepend="," property="money">
+			money = #money#
+		</isNotNull>
+		
+		<isNotNull prepend="," property="kindId">
+			kindId = #kindId#
+		</isNotNull>
+		<isNotNull prepend="," property="kindTitle">
+			kindTitle = #kindTitle#
+		</isNotNull>
+		<isNotNull prepend="," property="datetime">
+			datetime = #datetime#
+		</isNotNull>
+		where uid=#uid#
+	</update>
+	
+	<delete id="deleteIncome" parameterClass="string">
+		delete from income where uid=#uid#
+	</delete>
+	
+	<select id="selectIncomeById" resultClass="income" parameterClass="string">
+		select * from income where uid=#uid#
+	</select>
+	
+	<select id="selectAllIncome" resultClass="income" parameterClass="java.util.HashMap">
+		select * from income where 1=1
+		<isNotNull prepend="AND" property="begin">
+		<![CDATA[ datetime >= #begin# ]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="end">
+		<![CDATA[ datetime <= #end# ]]>
+		</isNotNull>
+		<isNotNull prepend=" " property="in">
+			<isNotNull prepend="AND" property="in.title">
+			<![CDATA[ title like #in.title# ]]>
+			</isNotNull>
+			<isGreaterThan prepend="AND" property="in.money" compareValue="0.0">
+			<![CDATA[ money = #in.money# ]]>
+			</isGreaterThan>
+			<isNotNull prepend="AND" property="in.kindId">
+			<![CDATA[ kindId = #in.kindId# ]]>
+			</isNotNull>
+		</isNotNull>
+		order by datetime
+	</select>
+	
+	<select id="selectIncomeByDate" resultClass="income" parameterClass="java.util.HashMap">
+		select * from income
+	</select>
+	
+</sqlMap>

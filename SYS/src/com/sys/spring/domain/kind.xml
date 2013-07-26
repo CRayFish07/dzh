@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="kind">
+
+	<typeAlias alias="kind" type="com.sys.spring.domain.Kind" />
+	
+	<resultMap id="kindMap" class="kind">
+		<result property="id" column="id"/>
+		<result property="uid" column="uid"/>
+		<result property="title" column="title"/>
+		<result property="note" column="note"/>
+		<result property="parentId" column="parentId"/>
+		
+	</resultMap>
+	
+	<insert id="saveKind" parameterClass="kind">
+		INSERT INTO kind(uid,title,note,parentId) VALUES(#uid#,#title#,#note#,#parentId#)
+	</insert>
+	
+	<update id="updateKind" parameterClass="kind">
+		update kind set uid = #uid#
+		<isNotNull prepend="," property="title">
+			title = #title#
+		</isNotNull>
+		<isNotNull prepend="," property="note">
+			note = #note#
+		</isNotNull>
+		<isNotNull prepend="," property="parentId">
+			parentId = #parentId#
+		</isNotNull>
+		where uid=#uid#
+	</update>
+	
+	<delete id="deleteKindById" parameterClass="string">
+		delete from kind where uid=#uid#
+	</delete>
+	
+	<select id="selectAllKinds" resultClass="kind">
+		select * from kind
+	</select>
+	
+	<select id="selectKindListByParentId" resultClass="kind" parameterClass="string">
+		select * from kind where parentId = #parentId#
+	</select>
+	
+	<select id="selectKindById" resultClass="kind" parameterClass="string">
+		select * from kind where uid=#uid#
+	</select>
+	
+</sqlMap>

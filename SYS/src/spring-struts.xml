@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+ 	<bean id="accountAction" class="com.sys.web.struts2.action.AccountAction" scope="prototype">
+	  	<property name="accountService" ref="accountService" />
+	  	<property name="kindService" ref="kindService" />
+ 	</bean>
+ 	
+ 	<bean id="accountTableAction" class="com.sys.web.struts2.action.AccountTableAction" scope="prototype">
+	  	<property name="accountService" ref="accountService" />
+	  	<property name="kindService" ref="kindService" />
+ 	</bean>
+ 	
+ 	<bean id="diaryAction" class="com.sys.web.struts2.action.DiaryAction" scope="prototype">
+	  	<property name="diaryService" ref="diaryService" />
+ 	</bean>
+ 	
+ 	<bean id="kindAction" class="com.sys.web.struts2.action.KindAction" scope="prototype">
+	  	<property name="kindService" ref="kindService" />
+ 	</bean>
+ 	
+ 	<!--  -->
+ 	<bean id="indexAction" class="com.sys.web.struts2.IndexAction" scope="prototype">
+	  	<property name="userService"><ref bean="userService"/></property>
+ 	</bean>
+ 	<!-- 框架 -->
+ 	<bean id="mainAction" class="com.sys.web.struts2.MainAction" scope="prototype">
+ 	    <property name="modService"><ref bean="modService"/></property>
+ 	</bean>
+ 	
+ 	<!-- 模块管理 -->
+ 	<bean id="moduleAction" class="com.sys.web.struts2.admin.ModuleAction" scope="prototype">
+ 	    <property name="modService"><ref bean="modService"/></property>
+ 	</bean>
+	
+ 	<!-- 角色管理 -->
+ 	<bean id="rolseAction" class="com.sys.web.struts2.admin.RolseAction" scope="prototype">
+ 	    <property name="rolseService"><ref bean="rolseService"/></property>
+ 	    <property name="modService"><ref bean="modService"/></property>
+ 	</bean>
+ 	
+ 	<!-- 用户角色管理 -->
+ 	<bean id="userinfoAction" class="com.sys.web.struts2.admin.UserinfoAction" scope="prototype">
+ 	    <property name="userService"><ref bean="userService"/></property>
+ 	    <property name="rolseService"><ref bean="rolseService"/></property>
+ 	    <property name="userinfoService"><ref bean="userinfoService"/></property>
+ 	</bean>
+ 	
+	<!-- 用户信息处理 -->
+	<bean id="userAction" class="com.sys.web.struts2.admin.UserAction" scope="prototype">
+	  	<property name="userService"><ref bean="userService"/></property>
+ 	</bean>
+ 	
+	<!-- 图片处理 -->
+	<bean id="imagesAction" class="com.sys.web.struts2.image.ImagesAction" scope="prototype">
+	  	<property name="imagesService"><ref bean="imagesService"/></property>
+	  	<property name="imageTypeService"><ref bean="imgTypeService"/></property>
+ 	</bean>
+	<bean id="imageTypeAction" class="com.sys.web.struts2.image.ImageTypeAction" scope="prototype">
+	  	<property name="imageTypeService"><ref bean="imgTypeService"/></property>
+ 	</bean>
+	<bean id="imageUploadAction" class="com.sys.web.struts2.image.ImagesUploadAction" scope="prototype">
+	  	<property name="imagesService"><ref bean="imagesService"/></property>
+	  	<property name="imageTypeService"><ref bean="imgTypeService"/></property>
+ 	</bean>
+</beans>

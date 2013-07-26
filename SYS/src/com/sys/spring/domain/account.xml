@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="account">
+
+	<typeAlias alias="account" type="com.sys.spring.domain.Account" />
+	<typeAlias alias="accountTable" type="com.sys.spring.domain.AccountTable" />
+	<resultMap id="accountMap" class="account">
+		<result property="id" column="id"/>
+		<result property="uid" column="uid"/>
+		<result property="title" column="title"/>
+		<result property="money" column="money"/>
+		
+		<result property="kindId" column="kindId"/>
+		<result property="kindTitle" column="kindTitle"/>
+		<result property="datetime" column="datetime"/>
+		<result property="userId" column="userId"/>
+		<result property="userName" column="userName"/>
+	</resultMap>
+	<resultMap id="accountTableMap" class="accountTable">
+		<result property="countNum" column="countNum"/>
+		<result property="money" column="money"/>
+		
+		<result property="type" column="type"/>
+		<result property="other" column="other"/>
+	</resultMap>
+	
+	<insert id="saveAccount" parameterClass="account">
+		INSERT INTO account(uid,title,money,kindId,kindTitle,datetime,userId,userName)
+		 	VALUES (#uid#,#title#,#money#,#kindId#,#kindTitle#,#datetime#,#userId#,#userName#)
+	</insert>
+	
+	<update id="updateAccount" parameterClass="account">
+		update account set uid = #uid#
+		<isNotNull prepend="," property="title">
+			title = #title#
+		</isNotNull>
+		<isNotNull prepend="," property="money">
+			money = #money#
+		</isNotNull>
+		
+		<isNotNull prepend="," property="kindId">
+			kindId = #kindId#
+		</isNotNull>
+		<isNotNull prepend="," property="kindTitle">
+			kindTitle = #kindTitle#
+		</isNotNull>
+		<isNotNull prepend="," property="datetime">
+			datetime = #datetime#
+		</isNotNull>
+		where uid=#uid#
+	</update>
+	
+	<delete id="deleteAccount" parameterClass="account">
+		delete from account where uid=#uid#
+	</delete>
+	
+	<select id="selectAccountById" resultClass="account" parameterClass="string">
+		select * from account where uid=#uid#
+	</select>
+	
+	<select id="selectAllAccounts" resultClass="account" parameterClass="java.util.HashMap">
+		select * from account where 1=1
+		<isNotNull prepend="AND" property="begin">
+		<![CDATA[ datetime >= #begin# ]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="end">
+		<![CDATA[ datetime <= #end# ]]>
+		</isNotNull>
+		<isNotNull prepend=" " property="acc">
+			<isNotNull prepend="AND" property="acc.title">
+			<![CDATA[ title like '%$acc.title$%' ]]>
+			</isNotNull>
+			<isGreaterThan prepend="AND" property="acc.money" compareValue="0.0">
+			<![CDATA[ money > #acc.money# ]]>
+			</isGreaterThan>
+			<isNotNull prepend="AND" property="acc.kindId">
+			<![CDATA[ kindId = #acc.kindId# ]]>
+			</isNotNull>
+		</isNotNull>
+		order by datetime desc
+	</select>
+	
+	<select id="groupAccounts" resultClass="accountTable" parameterClass="java.util.HashMap">
+		select count(*) countNum,sum(money) money 
+		<isEqual prepend="," property="type" compareValue="kind">
+			kindid type,kindtitle other
+		</isEqual>
+		<isEqual prepend="," property="type" compareValue="year">
+			substring(datetime,1,4) type,"year" other
+		</isEqual>
+		<isEqual prepend="," property="type" compareValue="month">
+			substring(datetime,1,7) type,"month" other
+		</isEqual>
+		<isEqual prepend="," property="type" compareValue="day">
+			substring(datetime,1,10) type,"day" other
+		</isEqual>
+		from account where 1=1
+		<isNotNull prepend="AND" property="begin">
+		<![CDATA[ datetime >= #begin# ]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="end">
+		<![CDATA[ datetime <= #end# ]]>
+		</isNotNull>
+		<isNotNull prepend=" " property="acc">
+			<isNotNull prepend="AND" property="acc.title">
+			<![CDATA[ title like '%$acc.title$%' ]]>
+			</isNotNull>
+			<isGreaterThan prepend="AND" property="acc.money" compareValue="0.0">
+			<![CDATA[ money > #acc.money# ]]>
+			</isGreaterThan>
+			<isNotNull prepend="AND" property="acc.kindId">
+			<![CDATA[ kindId = #acc.kindId# ]]>
+			</isNotNull>
+		</isNotNull>
+		group by 
+		<isEqual prepend=" " property="type" compareValue="kind">
+			kindid
+		</isEqual>
+		<isEqual prepend=" " property="type" compareValue="year">
+			substring(datetime,1,4)
+		</isEqual>
+		<isEqual prepend=" " property="type" compareValue="month">
+			substring(datetime,1,7)
+		</isEqual>
+		<isEqual prepend=" " property="type" compareValue="day">
+			substring(datetime,1,10)
+		</isEqual>
+	</select>
+	
+</sqlMap>

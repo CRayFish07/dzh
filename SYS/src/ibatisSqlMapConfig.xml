@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312" standalone="no"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		maxSessions="64" maxTransactions="8" maxRequests="128" />	
+	
+	<sqlMap resource="com/sys/spring/domain/User.xml" />
+	<sqlMap resource="com/sys/spring/domain/kind.xml" />
+	<sqlMap resource="com/sys/spring/domain/diary.xml" />
+	<sqlMap resource="com/sys/spring/domain/account.xml" />
+	<sqlMap resource="com/sys/spring/domain/income.xml" />
+	
+</sqlMapConfig>
