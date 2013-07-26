@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<package namespace="/" name="gzb" extends="struts-default">
+		<!-- index -->
+		<action name="index" class="indexAction">
+        	<result name="index">/index.jsp</result>
+        	<result name="success" type="redirect">main.do</result>
+        	<result name="out" type="redirect">index.do</result>
+		</action>
+		
+		<!-- main -->
+		<action name="main" class="mainAction">
+        	<result name="index">/main/index.jsp</result>
+        	<result name="top">/main/top.jsp</result>
+        	<result name="left">/main/left.jsp</result>
+        	<result name="right">/main/right.jsp</result>
+        	<result name="error" type="redirect">index.do</result>
+		</action>
+		
+		<!-- module -->
+		<action name="module" class="moduleAction">
+        	<result name="index">/main/admin/module_index.jsp</result>
+        	<result name="add">/main/admin/module_add.jsp</result>
+        	<result name="list">/main/admin/module_list.jsp</result>
+		</action>
+		
+		<!-- rolse -->
+		<action name="rolse" class="rolseAction">
+        	<result name="index">/main/admin/rolse_index.jsp</result>
+        	<result name="add">/main/admin/rolse_add.jsp</result>
+        	<result name="list">/main/admin/rolse_list.jsp</result>
+		</action>
+		
+		<!-- userinfo -->
+		<action name="userinfo" class="userinfoAction">
+        	<result name="index">/main/admin/userinfo_index.jsp</result>
+        	<result name="add">/main/admin/userinfo_add.jsp</result>
+        	<result name="list">/main/admin/userinfo_list.jsp</result>
+		</action>
+		
+		<!-- user -->
+		<action name="user" class="userAction">
+        	<result name="index">/main/admin/user_index.jsp</result>
+        	<result name="add">/main/admin/user_add.jsp</result>
+        	<result name="pwd">/main/admin/user_pwd.jsp</result>
+        	<result name="list">/main/admin/user_list.jsp</result>
+        	<result name="success">/common/success.jsp</result>
+		</action>
+		
+		<!-- images -->
+		<action name="images" class="imagesAction">
+        	<result name="index">/main/image/image_index.jsp</result>
+        	<result name="add">/main/image/image_add.jsp</result>
+        	<result name="add2">/main/image/image_add2.jsp</result>
+        	<result name="list">/main/image/image_list.jsp</result>
+        	<result name="show">/main/image/image_show.jsp</result>
+        	<result name="result">/common/result.jsp</result>
+		</action>
+		<action name="imgtype" class="imageTypeAction">
+        	<result name="index">/main/image/type_index.jsp</result>
+        	<result name="add">/main/image/type_add.jsp</result>
+        	<result name="list">/main/image/type_list.jsp</result>
+		</action>
+		
+		<action name="upload" class="imageUploadAction">
+        	<result name="index">/main/upload/index.jsp</result>
+        	<result name="success">/main/upload/upload.jsp</result>
+		</action>
+	</package>
+	
+</struts>

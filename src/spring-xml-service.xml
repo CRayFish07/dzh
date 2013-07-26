@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- 用户信息服务  -->
+	<bean id="userService" class="com.gzb.service.admin.impl.UserServiceImpl">
+	   <property name="dao" ><ref bean="userDao"/> </property>
+	</bean>
+	
+	<bean id="modService" class="com.gzb.service.admin.impl.ModuleServiceImpl">
+	   <property name="dao" ><ref bean="modDao"/> </property>
+	</bean>
+	
+	<bean id="rolseService" class="com.gzb.service.admin.impl.RolseServiceImpl">
+	   <property name="rolsedao" ><ref bean="rolseDao"/> </property>
+	   <property name="moduleserver" ><ref bean="modService"/> </property>
+	</bean>
+	
+	<bean id="userinfoService" class="com.gzb.service.admin.impl.UserinfoServiceImpl">
+	   <property name="rolseservice" ><ref bean="rolseService"/> </property>
+	   <property name="userservice" ><ref bean="userService"/> </property>
+	   <property name="userinfodao" ><ref bean="userinfoDao"/> </property>
+	</bean>
+	
+	<bean id="imgTypeService" class="com.gzb.service.img.impl.ImageTypeServiceImpl">
+	   <property name="dao" ><ref bean="imgtypeDao"/> </property>
+	   <property name="imagesService"><ref bean="imagesService"/></property>
+	</bean>
+	
+	<bean id="imagesService" class="com.gzb.service.img.impl.ImagesServiceImpl">
+	   <property name="dao" ><ref bean="imagesDao"/> </property>
+	</bean>
+</beans>

@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+.infolist{
+	margin-top:5px;
+	padding-top:10px;
+	position: relative;
+	float:left;
+	width:20%;
+	background:#222;
+	text-algin:center;
+}
+#list{
+	margin:5px;
+	border:3px double;
+}
+.infos{
+	margin-top:5px;
+	padding-top:10px;
+	position: relative;
+	float:left;
+	width:80%;
+	text-algin:left;
+}
+#info_title{
+	border: 3px;
+	text-algin:left;
+	font-size: 22px;
+	font-weight:bolder;
+	algin:left;
+	margin:10px;
+}
+#info_message{
+	text-algin:left;
+	font-size: 16px;
+	algin:left;
+	margin:15px;
+}

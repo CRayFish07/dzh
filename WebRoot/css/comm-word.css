@@ -1,0 +1,30 @@
+
+body{margin:0;padding:0;font-size:12px;background:#fff;font-family:arial, '宋体', Verdana, Geneva, Helvetica;color:#222;line-height:1.6em;text-align:left;}
+form,p,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6 {padding:0;margin:0;}
+ul,ol,dl {list-style:none;}
+td,input,textarea,select{font-size:12px;}
+img{border:0;}
+a{color:#336797;text-decoration:none;}
+a:hover {color:#ff6600;text-decoration:none;}
+
+
+.commonword{background-color:#F6F6F6;width:100%;display:table;line-height:18px;padding-top:4px;padding-bottom:4px; clear:both;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color: #FFF;}
+.commonword h1 p{font-size:12px;margin-left:4px;line-height:18px;font-weight: normal;}
+.commonword h1 form{font-size:12px;margin-left:4px;line-height:18px;font-weight: normal;}
+.commonword h1 span{font-size:12px;margin-left:0px;line-height:18px;font-weight: normal;color: #FF6600;}
+.commonword p{margin-left:4px;line-height:18px;}
+.commonword p.line4{margin-left:4px;line-height:18px}
+.commonword p.line14{margin-left:4px;line-height:18px}
+.commonword p.line18{margin-left:4px;line-height:18px;}
+.commonword p.line1818{margin-left:4px;line-height:18px;margin-top:6px;}
+.commonword a{padding-left: 1px;}
+.commonword a{color:red;}
+.commonword span.f3{color:#008000;}
+.commonword span.trainform{color:#000;}
+.commonword span.trainform form{margin-left:5px;}
+.commonword span.trainform a{margin-left:5px;}
+.commonword span.trainform input{margin-top:2px;}
+
+
+.keycont{line-height:18px;margin-bottom:3px;padding-left: 6px;background:#f6f6f6;}
+.keycont2{margin-top:3px;line-height:18px;margin-bottom:6px;padding-bottom: 4px;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: #DBE1E6;margin-left: 6px;}

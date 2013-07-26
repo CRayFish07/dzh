@@ -1,0 +1,269 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>调整上下左右顺序实例</title>
+<link rel="stylesheet" href="style/style.css"
+type="text/css">
+<script language="JavaScript">
+function chooseItems(source, target)
+{
+var choiceOptions = source.options;
+var selectedOptions = target.options;
+
+for (i = 0; i < (choiceOptions.length); i++)
+{
+var temp = choiceOptions.item(i);
+if (temp.selected == true)
+{
+var oOption = document.createElement("OPTION");
+selectedOptions[selectedOptions.length] = new Option(temp.text, temp.value);
+}
+}
+
+for (j = (choiceOptions.length-1); j >= 0; j--)
+{
+var temp = choiceOptions.item(j);
+if (temp.selected == true)
+{
+choiceOptions[j] = null;
+}
+}
+}
+
+function adjustUp()
+{
+var itemOptions = form1.selectcolumns.options;
+var selectedOption;
+var count = 0;
+var index;
+for ( i = 0; i < itemOptions.length ; i++)
+{
+var temp = itemOptions.item(i);
+if (temp.selected == true)
+{
+count++;
+if (count > 1)
+{
+alert("只能选择一个列调整顺序！");
+return;
+} else if(count == 1) {
+index = i;
+}
+}
+}
+if (count == 0)
+{
+alert("请选择要调整顺序的列！");
+return;
+}
+
+if (index == 0)
+return;
+
+selectedOption = itemOptions[index];
+var lastOption = itemOptions[index-1];
+var temp = new Option(selectedOption.text, selectedOption.value);
+
+selectedOption.text = lastOption.text;
+selectedOption.value = lastOption.value;
+selectedOption.selected = false;
+
+lastOption.text = temp.text;
+lastOption.value = temp.value;
+lastOption.selected = true;
+}
+
+function adjustDown()
+{
+var itemOptions = form1.selectcolumns.options;
+var selectedOption;
+var count = 0;
+var index;
+for ( i = 0; i < itemOptions.length ; i++)
+{
+var temp = itemOptions[i];
+if (temp.selected == true)
+{
+count++;
+if (count > 1)
+{
+alert("只能选择一个列调整顺序！");
+return;
+} else if(count == 1) {
+index = i;
+}
+}
+}
+
+if (count == 0)
+{
+alert("请选择要调整顺序的列！");
+return;
+}
+
+if (index == itemOptions.length-1)
+return;
+selectedOption = itemOptions[index];
+var nextOption = itemOptions[index+1];
+var temp = new Option(selectedOption.text, selectedOption.value);
+
+selectedOption.text = nextOption.text;
+selectedOption.value = nextOption.value;
+selectedOption.selected = false;
+
+nextOption.text = temp.text;
+nextOption.value = temp.value;
+nextOption.selected = true;
+}
+
+function checkForm(form1)
+{
+var columnsOptions = form1.selectcolumns.options;
+
+if (columnsOptions.length == 0) {
+alert("请选择要显示的列!");
+return false;
+}
+
+for (i = 0; i < columnsOptions.length; i++)
+{
+columnsOptions[i].selected = true;
+} 
+
+return true;
+}
+
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="basylistForward.do"
+onSubmit="return checkForm(form1)">
+<center>
+
+<table height="5" border="0" align="center" cellpadding="0"
+cellspacing="0">
+<tr>
+<td></td>
+</tr>
+</table>
+<table width="700">
+<tr>
+<td width="40%" align="center">
+<select name="choices" size="25" style="width: 100%"
+multiple="multiple">
+<option value="userName">
+用户名
+</option>
+<option value="password">
+密码
+</option>
+<option value="Email">
+邮箱
+</option>
+<option value="address">
+住址
+</option>
+<option value="telephone">
+联系方式
+</option>
+<OPTION value="birthday">
+生日
+</OPTION>
+<OPTION value="firstName">
+名
+</OPTION>
+<OPTION value="lastName">
+姓
+</OPTION>
+<option value="age">
+年龄
+</option>
+<option value="company">
+工作单位
+</option>
+<option value="workTime">
+参加工作日期
+</option>
+
+</select>
+</td>
+<td width="10%" align="center">
+<input name="but_r" type="button" class="buttonr"
+onClick="chooseItems(form1.choices, form1.selectcolumns)">
+<table height="5" border="0" align="center" cellpadding="0"
+cellspacing="0">
+<tr>
+<td></td>
+</tr>
+</table>
+<input name="but_l" type="button" class="buttonl"
+onClick="chooseItems(form1.selectcolumns, form1.choices)">
+</td>
+<td width="40%" align="center">
+<select name="selectcolumns" size="25" style="width: 100%"
+multiple="multiple">
+<option value="BasySex_n">
+性别
+</option>
+<option value="BasyAge">
+年龄
+</option>
+<option value="BasyRdate">
+入院日期
+</option>
+<option value="BasyCDate">
+出院日期
+</option>
+<option value="BasyCykbN">
+出院科别
+</option>
+<option value="BasyCyMzd">
+主要诊断名称
+</option>
+<option value="BasyCyMcyqk_n">
+出院情况
+</option>
+<option value="BasyZyfySum">
+住院费用
+</option>
+<option value="BasyJzh">
+备用号
+</option>
+</select>
+</td>
+<td width="10%" align="center">
+<input name="but_u" type="button" class="buttonu"
+onClick="adjustUp()">
+<table height="5" border="0" align="center" cellpadding="0"
+cellspacing="0">
+<tr>
+<td></td>
+</tr>
+</table>
+<input name="but_d" type="button" class="buttond"
+onClick="adjustDown()">
+</td>
+</tr>
+<tr>
+<TD align="center">
+&nbsp;
+</TD>
+<TD align="center">
+&nbsp;
+</TD>
+<TD align="center">
+<INPUT type="submit" class="button" value="显示(V)" 　accesskey="v">
+&nbsp;&nbsp;
+<a href="javascript:history.go(-1)"><font color="red">返回</font>
+</a>
+</TD>
+<TD align="center">
+&nbsp;
+</TD>
+</tr>
+</table>
+</center>
+</form>
+</body>
+</html> 

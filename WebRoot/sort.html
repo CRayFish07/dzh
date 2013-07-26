@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>排序功能</title>
+<link href="css/frame.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/sort/ui.core.js"></script>
+<script type="text/javascript" src="js/sort/ui.sortable.js"></script>
+<script type="text/javascript"> 
+$(function() {
+	$("#sortable").sortable();
+	$("#sortable").disableSelection();
+});
+
+function subSortServer(){
+	var allgame = "";
+	$("input[name=sortgame]").each(function(){
+		allgame += $(this).val() + ",";
+	});
+	allgame = allgame.substring(0, allgame.length-1);
+	$.ajax({
+		type: "POST",
+		url: "index.php?module=game&control=admin&action=gameControll&type=subSortGame",
+		data: {"paramAll": allgame},
+		success: function(data){
+			alert("OK");
+			location.href = "index.php?module=game&control=admin&action=gameManager";
+		}
+	});
+}
+
+</script>
+
+</head>
+<body>
+
+
+<div id="main">
+
+	<div id="nav_gl"><h3>排序</h3></div>
+    <div id="gamemain">
+		<ul id="sortable">
+        <li id='l_0'><input type='hidden' name='sortgame' value='503' />武林3</li>
+<li id='l_1'><input type='hidden' name='sortgame' value='lj' />灵将</li>
+<li id='l_2'><input type='hidden' name='sortgame' value='wkll' />悟空来了</li>
+<li id='l_3'><input type='hidden' name='sortgame' value='jjsg' />街机三国</li>
+<li id='l_4'><input type='hidden' name='sortgame' value='nb' />南帝北丐</li>
+<li id='l_5'><input type='hidden' name='sortgame' value='lhzs' />烈火战神</li>
+<li id='l_6'><input type='hidden' name='sortgame' value='xyb' />轩辕变</li>
+<li id='l_7'><input type='hidden' name='sortgame' value='fscq' />封神传奇</li>
+<li id='l_8'><input type='hidden' name='sortgame' value='xs' />星神召唤</li>
+<li id='l_9'><input type='hidden' name='sortgame' value='ftx' />范特西篮球经理</li>
+<li id='l_10'><input type='hidden' name='sortgame' value='nb2' />南帝北丐2</li>
+<li id='l_11'><input type='hidden' name='sortgame' value='sxd' />神仙道</li>
+<li id='l_12'><input type='hidden' name='sortgame' value='dxz' />大侠传</li>
+<li id='l_13'><input type='hidden' name='sortgame' value='fr2' />凡人修真2</li>
+<li id='l_14'><input type='hidden' name='sortgame' value='nsj' />逆世界</li>
+<li id='l_15'><input type='hidden' name='sortgame' value='mhfx' />梦幻飞仙</li>
+<li id='l_16'><input type='hidden' name='sortgame' value='rxws' />热血无双</li>
+<li id='l_17'><input type='hidden' name='sortgame' value='dpcq' />斗破苍穹2</li>
+<li id='l_18'><input type='hidden' name='sortgame' value='ly' />烈焰</li>
+<li id='l_19'><input type='hidden' name='sortgame' value='jtxm' />九天仙梦</li>
+<li id='l_20'><input type='hidden' name='sortgame' value='hysj' />火影世界</li>
+<li id='l_21'><input type='hidden' name='sortgame' value='mhxx' />梦幻修仙</li>
+<li id='l_22'><input type='hidden' name='sortgame' value='long' />龙将</li>
+<li id='l_23'><input type='hidden' name='sortgame' value='hzw' />热血海贼王</li>
+<li id='l_24'><input type='hidden' name='sortgame' value='sssg' />盛世三国</li>
+<li id='l_25'><input type='hidden' name='sortgame' value='tdyx' />天地英雄</li>
+<li id='l_26'><input type='hidden' name='sortgame' value='wg' />王国印记</li>
+<li id='l_27'><input type='hidden' name='sortgame' value='sq' />神曲</li>
+<li id='l_28'><input type='hidden' name='sortgame' value='op' />小小海贼王</li>
+<li id='l_29'><input type='hidden' name='sortgame' value='wlm' />武林梦</li>
+<li id='l_30'><input type='hidden' name='sortgame' value='jtzs' />惊天战神</li>
+<li id='l_31'><input type='hidden' name='sortgame' value='as' />傲视天地</li>
+<li id='l_32'><input type='hidden' name='sortgame' value='frxz' />凡人修真</li>
+<li id='l_33'><input type='hidden' name='sortgame' value='hhsh' />洪荒神话</li>
+<li id='l_34'><input type='hidden' name='sortgame' value='yxyz' />英雄远征</li>
+<li id='l_35'><input type='hidden' name='sortgame' value='wx' />武侠全明星</li>
+<li id='l_36'><input type='hidden' name='sortgame' value='mjcs' />名将传说</li>
+        </ul>
+
+        <div class="clear"></div>
+
+        <div id="delInfo">说明：按住游戏名称进行拖动，可自由调整到最满意的位置。调整完成请点击按钮提交保存。</div>
+
+        <div id="submitinfo">
+
+        <button class="imgbtn pointer fB" onClick="javascript:subSortServer();">提交保存</button>&nbsp;
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,76 @@
+/**
+图片列表样式
+*/
+@CHARSET "UTF-8";
+/* 图片包*/
+.imagebox{
+	width:100%;
+	height:800px;
+	background:#111;
+	text-algin:center;
+	
+	position: relative;
+	left:0px;
+	top:10px;
+}
+/* 顶部*/
+.imagetop{
+	width:100%;
+	height:30px;
+	background:#222;
+	text-algin:center;
+	margin:2px 2px 2px 0px;
+	position: relative;
+	top:2px;
+}
+/* 头部图片信息右侧*/
+.imageinfo_right{
+	position: relative;
+	float:right;
+	margin-right:10px;
+	padding:3px;
+	top:2px;
+}
+/* 头部图片信息左侧*/
+.imageinfo_left{
+	position: relative;
+	float:left;
+	margin-left:10px;
+	padding:3px;
+	top:2px;
+}
+/* 图片展示*/
+.images{
+	float:left;
+	position: relative;
+	width:90%;
+	height:600px;
+	left:5%;
+	top:5px;
+	text-align:center;
+}
+/* 缩略图列表*/
+.imagelist{
+	width:100%;
+	height:100px;
+	background:#777777;
+	text-algin:center;
+	margin:2px 2px 2px 0px;
+	float:left;
+	position: relative;
+	top:10px;
+	text-align:center;
+}
+/* 缩略图*/
+.ilist{
+	float:left;
+	position: relative;
+	width:90px;
+	left:5px;
+	top:3px;
+	margin:1px;
+	padding:1px;
+	background-color : #000000;
+	text-algin:center;
+	border:1px;
+}

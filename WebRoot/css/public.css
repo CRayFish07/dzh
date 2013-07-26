@@ -1,0 +1,180 @@
+/*全局设置*/
+html,body {
+	/*background:#555555;*/
+	width:100%;
+
+    margin:0px;
+ 	padding:0px;
+	font-family :Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	border:0;
+	color: #87cefa;
+	/*color: #FFA54F;*/
+	/*background-color :#ddd;*/
+	/*background:url(../images/bg.jpg);*/
+	/*background:url(../images/newbg.gif);*/
+	/*background:url(e:/bg.gif);*/
+}
+
+body,img,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,table,input,textarea,p,blockquote,th,td,a,span,em,checkbox,radio,button{
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img,div{
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var{
+	font-style:normal;
+	font-weight:400;
+}
+ul, ol, li{
+	list-style:none;
+}
+caption,th{
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6{
+	font-size:100%;
+	font-weight:400;
+}
+input,textarea,select{
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+	*font-size:100%;
+}
+strong{
+	font-weight:800;
+}
+
+A:link {
+	COLOR: #87cefa;
+	text-decoration:none;
+}
+A:visited {
+	COLOR: #87cefa;
+	text-decoration:none;
+}
+A:hover {
+	COLOR: #fff;
+	text-decoration:none;
+}
+A:active {
+	COLOR: #fff;
+	text-decoration:none;
+}
+
+
+/*导航栏样式*/
+.TopMenu{ position:relative; z-index:100;width:100%;} 
+.TopMenu img{ margin-top:4px;}
+.TopMenu ul{list-style:none;} 
+.TopMenu li { float:left; position:relative;} 
+.TopMenu ul ul {visibility:hidden;position:absolute;left:0px;top:29px;} 
+.TopMenu table {position:absolute; top:0; left:0;} 
+.TopMenu ul li:hover ul, 
+.TopMenu ul a:hover ul{ visibility:visible;} 
+.TopMenu a{display:block; padding:9px 15px 6px 15px; background:url(../images/arrr.gif) no-repeat right center; text-decoration:none;font-size:18px;font-weight:bold;} 
+.TopMenu a:hover{text-decoration:none; background:url(../images/gh.gif) no-repeat right center #fdffea;} 
+.TopMenu ul ul{ background:#333333; border-right:1px solid #cccccc; border-left:1px solid #cccccc;} 
+.TopMenu ul ul li { clear:both; text-align:center; background-image:none;} 
+.TopMenu ul ul li a{ display:block; width:80px; background-image:none; height:15px; border-bottom:1px solid #cccccc;font-size:14px;} 
+.TopMenu ul ul li a:hover{ background:#fafafa; background-image:none; border-bottom:1px solid #cccccc; font-weight:bold;}
+
+.navigate{
+	position:relative;
+	width:100%;
+	height:30px;
+	background:#777777;
+	text-algin:center;
+	
+	left:0px;
+	top:3px;
+	z-index:100;
+}
+.navigate img{
+	margin-top:4px;
+}
+.navigate ul{
+	list-style:none;
+	text-align:center;
+}
+.navigate li{
+	float:left;
+	position:relative;
+	left:5px;
+	top:5px;
+	background:#333333;
+	margin-left:2px;
+	margin-right:2px;
+	width:100px;
+	text-align:center;
+}
+.navigate li a{
+	height:18px;
+	display:block;
+	padding:2px 5px 2px 5px;
+	background:url(images/arrr.gif) no-repeat right center;
+	text-decoration:none;
+	font-size:14px;
+	font-weight:bold;
+}
+.navigate li a:hover{
+	text-decoration:none;
+	background:url(/images/m2.gif) no-repeat;
+}
+.navigate ul ul{
+	visibility:hidden;
+	position:absolute;
+	left:-2px;
+	top:20px;
+	background:#FFFFFF;
+}
+.navigate ul ul li{
+	margin:1px 0px 1px 1px;
+	/*margin:0px;*/
+	padding:0px;
+	top:0px;
+	left:0px;
+	background:#333333;
+	border:1px;
+}
+.navigate ul li:hover ul, 
+.navigate ul a:hover ul{
+	visibility:visible;
+}
+.navigate ul ul li a:hover{
+	background:#999999;
+	background-image:none;
+	border-bottom:1px solid #cccccc;
+	font-weight:bold;
+	background:url(/images/m2.gif) no-repeat;
+}
+
+.body_div{
+	width:960px;
+	text-algin:center;
+	margin:0px auto;
+	background:#000;
+}
+.main_div{
+	width:100%;
+	text-algin:left;
+	margin:0px auto;
+}
+
+.logo{
+	margin-top:2px;
+	width:960px;
+	height:80px;
+	/*border:1px solid red;*/
+}
+.common_div{
+	border:0px;
+	text-align:center;
+	border-spacing:0;
+}
