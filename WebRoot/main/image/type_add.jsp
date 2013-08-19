@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8" />
 <title>相册管理</title>
-<link rel="stylesheet" href="/css/admin/style.css" />
+<link rel="stylesheet" href="../admin/css/style.css" />
 </head>
 <body>
 <div class="content">

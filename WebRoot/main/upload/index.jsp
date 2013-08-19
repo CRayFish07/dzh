@@ -6,7 +6,7 @@
 <title>SWFUpload 批量上传</title>
 
 <link href="main/upload/css/default.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/admin/style.css" />
+<link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="main/upload/swfupload/swfupload.js"></script>
 <script type="text/javascript" src="main/upload/js/swfupload.queue.js"></script>
 <script type="text/javascript" src="main/upload/js/fileprogress.js"></script>

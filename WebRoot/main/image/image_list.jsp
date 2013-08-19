@@ -4,8 +4,8 @@
 <html>
 <head>
 <title>相册列表</title>
-<link rel="stylesheet" href="css/admin/style.css" />
-<script language="javascript" type="text/javascript" src="js/jquery/jquery.js" ></script>
+<link rel="stylesheet" href="../admin/css/style.css" />
+<script language="javascript" type="text/javascript" src="../admin/js/jquery.js" ></script>
 
 </head>
 <body>

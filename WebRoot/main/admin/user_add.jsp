@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>用户添加</title>
-<link rel="stylesheet" href="css/admin/style.css" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 <div class="content">

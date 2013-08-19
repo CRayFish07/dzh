@@ -4,15 +4,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>后台管理系统</title>
-<link href="css/frame.css" rel="stylesheet" type="text/css" />
+<link href="admin/css/frame.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="showmenu">
 <div class="pagemask"></div>
-<iframe class="iframemask"></iframe>
 <div class="head">
 <div class="top">
 <div class="top_logo">
-	<img src="images/admin_top_logo.gif" width="170" height="37" />
+	<img src="admin/images/admin_top_logo.gif" width="170" height="37" />
 </div>
 <div class="top_link">
 <ul>

@@ -9,20 +9,23 @@
 	<package namespace="/" name="gzb" extends="struts-default">
 		<!-- index -->
 		<action name="index" class="indexAction">
-        	<result name="index">/index.jsp</result>
+        	<result name="index">/main/index.jsp</result>
         	<result name="success" type="redirect">main.do</result>
         	<result name="out" type="redirect">index.do</result>
 		</action>
 		
 		<!-- main -->
 		<action name="main" class="mainAction">
-        	<result name="index">/main/index.jsp</result>
+        	<result name="index">/main/main.jsp</result>
         	<result name="top">/main/top.jsp</result>
         	<result name="left">/main/left.jsp</result>
         	<result name="right">/main/right.jsp</result>
         	<result name="error" type="redirect">index.do</result>
 		</action>
-		
+	</package>
+	
+	<!-- 用户权限管理 -->
+	<package namespace="/admin" name="admin" extends="struts-default">
 		<!-- module -->
 		<action name="module" class="moduleAction">
         	<result name="index">/main/admin/module_index.jsp</result>
@@ -53,6 +56,10 @@
         	<result name="success">/common/success.jsp</result>
 		</action>
 		
+	</package>
+	
+	<!-- 用户权限管理 -->
+	<package namespace="/image" name="image" extends="struts-default">
 		<!-- images -->
 		<action name="images" class="imagesAction">
         	<result name="index">/main/image/image_index.jsp</result>

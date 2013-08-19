@@ -1,8 +1,91 @@
-<frameset id="mainfrm" name="f2" rows="62,*"  frameborder="no" border="0" framespacing="0">
-	<frame src="main!top.do" name="top" scrolling="no" noresize="noresize" class="left" />
-	<frameset id="frame-body" name="f3" rows="*" cols="180,10,*" frameborder="no" border="0" framespacing="0">
-		<frame src="main!left.do" name="left" scrolling="auto" noresize="noresize" >
-		<frame src="" name="center" scrolling="no" noresize="noresize" >
-		<frame src="main!right.do" name="main" scrolling="auto" noresize="noresize" />
-	</frameset>
-</frameset>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="/common/taglibs.jsp"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户登录</title>
+<link href="admin/css/manager.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.login{
+	height:30px;
+	width:240px;
+	padding-top:5px;
+	align:center;
+}
+.text{
+	height:18px;
+	width:180px;
+	padding-top:5px;
+	color:#808080
+}
+</style>
+</head>
+<body>
+
+<form action="index!login.do" name="login" method="post">
+<div align="center">
+	<div class="login"></div>
+	<div class="login" align="left"><img alt="login" src="admin/images/loginbox_dl.jpg"></div>
+	<div class="login">用户名：&nbsp;<input type="text" name="username" value="用户名" class="text"></div>
+	<div class="login">密&nbsp;&nbsp;&nbsp;码：&nbsp;<input type="password" name="password" class="text"></div>
+	<div class="login" align="right"><input type="image" name="submit" src="admin/images/login_button.jpg"/></div>
+</div>
+</form>
+
+</body>
+<script language="javascript" type="text/javascript" src="admin/js/jquery.js" ></script>
+<script language="javascript" type="text/javascript" >
+$(function() {
+	$('input[name="username"]').focus(function(){
+		$('input[name="username"]').val('');
+	});
+	$('input[name="username"]').blur(function(){
+		if($('input[name="username"]').val() == ''){
+			$('input[name="username"]').val('用户名');
+		}
+	});
+	
+	$('input[name="submit"]').click(function() {
+		var username = $('input[name="username"]').val();
+		var password = $('input[name="password"]').val();
+		if(username == ''){
+			alert('用户名不能为空!');
+			$('input[name="username"]').focus();
+			return false;
+		}
+		
+		if(password == ''){
+			alert('密码不能为空!');
+			$('input[name="password"]').focus();
+			return false;
+		}
+		
+		if (username && password) {
+//			alert("submit"+$('form')) ;
+			
+			$('form').submit();
+			/*
+			$.post("index!login.do", {'u.username': username,'u.password': password},function(data) {});
+			
+			$.post("index!check.do", {'username': username,'password': password}, 
+					function(data) {
+				if(data == '-2') {
+					alert('not user');
+				}else if (data == '-1'){
+					alert("密码错误");
+				}else if (data == 0){
+					$('form').submit();
+				}else {
+					alert(data);
+				}
+			});*/
+		}
+	});
+});
+
+if("${message}"!=""){
+	alert("${message}") ;
+}
+</script>
+</html>

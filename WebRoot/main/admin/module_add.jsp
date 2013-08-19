@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="StyleSheet" href="css/admin/style.css" type="text/css"/>
+<link rel="StyleSheet" href="css/style.css" type="text/css"/>
 </head>
 <body>
 
@@ -45,7 +45,7 @@
 </div>
 </body>
 
-<script language="javascript" type="text/javascript" src="js/jquery/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="js/jquery.js" ></script>
 <script language="javascript" type="text/javascript" >
 $(function() {
 	$('input[name="submit"]').click(function() {

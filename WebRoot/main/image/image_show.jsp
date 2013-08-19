@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>展示</title>
-<link rel="stylesheet" href="/css/admin/style.css" />
+<link rel="stylesheet" href="../admin/css/style.css" />
 </head>
 <body>
 <div class="content">
