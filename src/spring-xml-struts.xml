@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
- 	<bean id="indexAction" class="com.gzb.web.struts.IndexAction" scope="prototype">
+ 	<bean id="managerAction" class="com.gzb.web.struts.IndexAction" scope="prototype">
 	  	<property name="userService"><ref bean="userService"/></property>
  	</bean>
  	<!-- 框架 -->
@@ -43,5 +43,10 @@
 	<bean id="imageUploadAction" class="com.gzb.web.struts.image.ImagesUploadAction" scope="prototype">
 	  	<property name="imagesService"><ref bean="imagesService"/></property>
 	  	<property name="imageTypeService"><ref bean="imgTypeService"/></property>
+ 	</bean>
+ 	
+	
+	
+ 	<bean id="indexAction" class="com.gzb.web.struts.index.IndexAction" scope="prototype">
  	</bean>
 </beans>

@@ -9,18 +9,22 @@
 	<package namespace="/" name="gzb" extends="struts-default">
 		<!-- index -->
 		<action name="index" class="indexAction">
-        	<result name="index">/main/index.jsp</result>
-        	<result name="success" type="redirect">main.do</result>
-        	<result name="out" type="redirect">index.do</result>
+        	<result name="index">/index.jsp</result>
 		</action>
 		
+		<!-- index -->
+		<action name="manager" class="managerAction">
+        	<result name="index">/main/index.jsp</result>
+        	<result name="success" type="redirect">main.do</result>
+        	<result name="out" type="redirect">manager.do</result>
+		</action>
 		<!-- main -->
 		<action name="main" class="mainAction">
         	<result name="index">/main/main.jsp</result>
         	<result name="top">/main/top.jsp</result>
         	<result name="left">/main/left.jsp</result>
         	<result name="right">/main/right.jsp</result>
-        	<result name="error" type="redirect">index.do</result>
+        	<result name="error" type="redirect">manager.do</result>
 		</action>
 	</package>
 	
