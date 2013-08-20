@@ -1,27 +1,25 @@
-
 #通用CSS
-body{color:#000;background:#fff;padding:7px 0 0;margin:0;position:relative}
-body,th,td{font-family:arial}
-p,form,ol,ul,li,dl,dt,dd,h3{margin:0;padding:0;list-style:none}
-input{padding-top:0;padding-bottom:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
-table,img{border:0}
-td{font-size:9pt;line-height:18px}
-em{font-style:normal;color:#cc0000}
-a em{text-decoration:underline}
-cite{font-style:normal;color:#008000}
+#@import url("./public.css");
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%;}
+input:focus,textarea:focus,select:focus{ outline:none;}
+select,input,img {vertical-align:middle;}
 
 #table格式
 .tb {border:0;font-size:100%;padding:0;}
 .tb tr,td{font-size:9pt;font-family:arial;text-align:center;margin:0;padding:0;padding-right:0;padding-left:0;border:0}
 .tb a{font-style:normal;color:red;cursor:hand;padding:0;}
 
+li{list-style:none;display:inline; float:left; margin:0 5px;}
+ul{margin:0px;padding:0px;float:left;}
+p{margin:0px;padding:0px;float:right;}
 
-
-
-	
-	.f{line-height:115%;*line-height:120%;font-size:100%;width:33.7em;word-break:break-all;word-wrap:break-word}
-	.h{margin-left:8px;width:100%}
-	.r{word-break:break-all;cursor:hand;width:238px}
-	.t{font-weight:normal;font-size:medium}
-	
-	.test {font-style:normal;color:#cc0000}
+/* body style */
+body {repeat-x 0 10px; color:#333; text-align:center;font-size:12px;font-family:Arial,Console,Verdana,Courier New;}
+body{display:block; *display:inline-block; width:960px; margin:0 auto; padding:9px; border:solid 1px #ddd; background:#fff; -webkit-border-radius:8px; -moz-border-radius:8px; -khtml-border-radius:8px; border-radius:8px; /*-moz-box-shadow:0 0 10px #333; -webkit-box-shadow:0 0 10px #333;*/ text-align:left;}
+body:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
