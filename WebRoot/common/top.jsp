@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-<div class="nav_top">
+<div class="nav_top" style="display:block;">
 	<p>
 	<span style="color:red;">您还未登录！</span>|
 	<a target="_top" href="https://passport.csdn.net/account/login">登录</a>|
@@ -16,7 +16,7 @@
 	</ul>
 </div>
 
-<div>
+<div style="display:block;float: left;">
 <p>
 <img width="146" height="58" title="logo" alt="logo" src="http://img01.taobaocdn.com/tps/i1/T1Kz0pXzJdXXXIdnjb-146-58.png"></img>
 </p>
