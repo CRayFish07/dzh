@@ -49,4 +49,6 @@
 	
  	<bean id="indexAction" class="com.gzb.web.struts.index.IndexAction" scope="prototype">
  	</bean>
+ 	<bean id="gameAction" class="com.gzb.web.struts.game.GameAction" scope="prototype">
+ 	</bean>
 </beans>

@@ -11,6 +11,9 @@
 		<action name="index" class="indexAction">
         	<result name="index">/index.jsp</result>
 		</action>
+		<action name="game" class="gameAction">
+        	<result name="index">/game.jsp</result>
+		</action>
 		
 		<!-- index -->
 		<action name="manager" class="managerAction">
