@@ -18,14 +18,15 @@ a广告
 <br/>
 <br/>
 <br/>
-<applet code="com.gzb.game.JinHua.class"  width=500 height=400 id="jh" CodeBase="." ARCHIVE="jar/game.jar"> </applet>
+画图<br>
+<applet code="com.gzb.game.JinHua.class"  width=500 height=400 id="jh" CodeBase="." ARCHIVE="jar/game.jar"> </applet><br>
 
-<applet code="com.gzb.game.encode.Encode.class" width=400 height=200 CodeBase="." ARCHIVE="jar/game.jar"> </applet>
+编码<br>
+<applet code="com.gzb.game.encode.Encode.class" width=400 height=200 CodeBase="." ARCHIVE="jar/game.jar"> </applet><br>
 
-<applet code="com.gzb.game.evolution.Evolution.class" width=600 height=700 CodeBase="." ARCHIVE="jar/game.jar"> </applet>
-==
-<applet code="com.gzb.game.evolution.Main.class" width=500 height=400 CodeBase="." ARCHIVE="jar/game.jar"> </applet>
-===
+种树<br>
+<applet code="com.gzb.game.evolution.Evolution.class" width=600 height=700 CodeBase="." ARCHIVE="jar/game.jar"> </applet><br>
+
 计算器<br/>
 <APPLET CODE="com.gzb.game.JiSuanQi.class" id="JiSuanQi" codebase="." ARCHIVE = "jar/game.jar" WIDTH="500" HEIGHT="150"></APPLET>
 <p><a href="#" onclick="openApp()">计算器</a></p>

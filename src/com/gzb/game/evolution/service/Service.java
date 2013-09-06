@@ -16,6 +16,10 @@ public class Service {
 	public void change(Hashtable<Integer,Hashtable<Integer,Organism>> table , Organism org, int _leve){
 		this.leve = _leve ;
 		List<Organism> list = this.getSames(table, org) ;
+		if(list.size()<3){
+			org.change(_leve) ;
+			return ;
+		}
 		for(Organism _org : list){
 			_org.change(0) ;
 		}
@@ -64,13 +68,13 @@ public class Service {
 		//判断左右
 		if(x>0){
 			Organism _org = table.get(x-1).get(y) ;
-			if(org.getLeve()==leve){
+			if(_org.getLeve()==leve){
 				list.addAll(this.getSames(table,_org,leve)) ;
 			}
 		}
 		if(x<Const.size-1){
 			Organism _org = table.get(x+1).get(y) ;
-			if(org.getLeve()==leve){
+			if(_org.getLeve()==leve){
 				list.addAll(this.getSames(table,_org,leve)) ;
 			}
 		}
@@ -78,13 +82,13 @@ public class Service {
 		//判断上下
 		if(y>0){
 			Organism _org = table.get(x).get(y-1) ;
-			if(org.getLeve()==leve){
+			if(_org.getLeve()==leve){
 				list.addAll(this.getSames(table,_org,leve)) ;
 			}
 		}
 		if(y<Const.size-1){
 			Organism _org = table.get(x).get(y+1) ;
-			if(org.getLeve()==leve){
+			if(_org.getLeve()==leve){
 				list.addAll(this.getSames(table,_org,leve)) ;
 			}
 		}
