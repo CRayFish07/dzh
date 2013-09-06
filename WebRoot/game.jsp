@@ -21,6 +21,8 @@ a广告
 <applet code="com.gzb.game.JinHua.class"  width=500 height=400 id="jh" CodeBase="." ARCHIVE="jar/game.jar"> </applet>
 
 <applet code="com.gzb.game.encode.Encode.class" width=400 height=200 CodeBase="." ARCHIVE="jar/game.jar"> </applet>
+
+<applet code="com.gzb.game.evolution.Evolution.class" width=600 height=700 CodeBase="." ARCHIVE="jar/game.jar"> </applet>
 ==
 <applet code="com.gzb.game.evolution.Main.class" width=500 height=400 CodeBase="." ARCHIVE="jar/game.jar"> </applet>
 ===
