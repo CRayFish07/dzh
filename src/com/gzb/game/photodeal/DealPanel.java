@@ -1,4 +1,4 @@
-package com.gzb.game.evolution;
+package com.gzb.game.photodeal;
 
 import java.awt.SystemColor;
 import java.awt.event.MouseEvent;
@@ -10,12 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.gzb.game.evolution.Const;
 import com.gzb.game.evolution.service.Organism;
 import com.gzb.game.evolution.service.Service;
 import com.gzb.game.xy.XYConstraints;
 import com.gzb.game.xy.XYLayout;
 
-public class MainPanel extends JPanel {
+public class DealPanel extends JPanel {
 
 	/**
 	 * 
@@ -27,7 +28,7 @@ public class MainPanel extends JPanel {
 	private int add_leve ;
 	private int add_type ;
 	private JLabel add_Label = new JLabel() ;
-	public MainPanel() {
+	public DealPanel() {
 		XYLayout xYLayout1 = new XYLayout();
 		xYLayout1.setWidth(Const.width);
 		xYLayout1.setHeight(Const.height);

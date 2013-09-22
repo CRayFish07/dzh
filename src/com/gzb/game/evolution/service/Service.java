@@ -12,6 +12,23 @@ public class Service {
 
 	private HashSet<String> set = new HashSet<String>() ;
 	private int leve ;
+	private int type ;
+	/**
+	 * 生成初始化随机等级
+	 * @return
+	 */
+	public int getRandomLeve(){
+		int r = (int)(Math.random()*100) ;
+		int leve = 0 ;
+		if(r>70 && r<=90){
+			leve = 1 ;
+		}else if(r>90 && r<=97){
+			leve = 2 ;
+		}else if(r>97){
+			leve = 3 ;
+		}
+		return leve ;
+	}
 	
 	/**
 	 * 点击处理
@@ -19,21 +36,20 @@ public class Service {
 	 * @param org
 	 * @param _leve
 	 */
-	public void change(Hashtable<Integer,Hashtable<Integer,Organism>> table , Organism org, int _leve){
+	public void change(Hashtable<Integer,Hashtable<Integer,Organism>> table , int x, int y, int _leve, int _type){
 		this.leve = _leve ;	//设置起始查找等级
+		this.type = _type ;	//设置起始查找等级
+		Organism org = table.get(x).get(y) ;
 		//查找需要合并的数据
 		List<Organism> list = this.getSames(table, org) ;
 		
-		//数据不足三个，不需要合并，改变当前位置即可
-		if(list.size()<3){
-			org.change(_leve) ;
-			return ;
-		}
 		//需要合并的处理。 首先将所有需合并的初始化，再将最初的位置设置成最高级
+		if(list.size()>=3){
 		for(Organism _org : list){
-			_org.change(0) ;
+			_org.change(0,0) ;
 		}
-		org.change(leve) ;
+		}
+		org.change(leve,this.type) ;
 	}
 	
 	/**
@@ -44,6 +60,7 @@ public class Service {
 	 * @return
 	 */
 	private List<Organism> getSames(Hashtable<Integer,Hashtable<Integer,Organism>> table , Organism org){
+		set = new HashSet<String>() ;
 		//查找起始等级数据
 		List<Organism> list = this.getSames(table, org, leve) ;
 		List<Organism> allList = list ;	//存储查找到的数据
@@ -73,6 +90,11 @@ public class Service {
 	 */
 	private List<Organism> getSames(Hashtable<Integer,Hashtable<Integer,Organism>> table , Organism org,int leve){
 		List<Organism> list = new ArrayList<Organism>() ;
+		
+		//类型判断
+		if(org.getType()!=this.type){
+			return list ;
+		}
 		
 		int x = org.getX() ;
 		int y = org.getY() ;

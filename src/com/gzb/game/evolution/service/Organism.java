@@ -31,8 +31,9 @@ public class Organism {
 		this.setLabel() ;
 	}
 	
-	public int change(int leve){
+	public int change(int leve, int type){
 		this.leve = leve ;
+		this.type = type ;
 		
 		this.setLabel() ;
 		return 0 ;
