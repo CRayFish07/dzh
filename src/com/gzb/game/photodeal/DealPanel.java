@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.Hashtable;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -41,27 +42,9 @@ public class DealPanel extends JPanel {
 	
 	//初始化
 	private void init(){
-		int size = Const.size ;
-		int len = Const.len ;
-		int head = Const.height-size*len ;
-
-		table = new Hashtable<Integer,Hashtable<Integer,Organism>>() ;
-		for(int i=0;i<size;i++){
-			Hashtable<Integer,Organism> row = new Hashtable<Integer,Organism>() ;
-			for(int j=0;j<size;j++){
-				int leve = service.getRandomLeve() ;
-				Organism org = new Organism(i,j,leve) ;
-				
-				JLabel lab = org.getLabel() ;
-				lab.addMouseListener(new LabelActionAdapter(i,j)) ;
-				this.add(lab, new XYConstraints(len*j,head+len*i,len-1,len-1));
-				
-				row.put(j, org) ;
-			}
-			table.put(i, row) ;
-		}
+		JFileChooser jc = new JFileChooser();
 		
-		this.add(add_Label, new XYConstraints(0,0,len-1,len-1));
+		this.add(jc, new XYConstraints(0,0,500,300));
 		this.setAddLeve() ;
 	}
 	

@@ -13,8 +13,8 @@ public class DealPhoto extends Applet {
 
 	public void init(){
 		this.setSize(Const.width,Const.height) ;
-		DealPanel paintPanel = new DealPanel() ;
-		add(paintPanel) ;
+		DealPanel panel = new DealPanel() ;
+		add(panel) ;
 	}
 }
 
