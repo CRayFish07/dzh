@@ -10,8 +10,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class DealImageDao {
+import com.drew.imaging.jpeg.JpegMetadataReader;
+import com.drew.imaging.jpeg.JpegProcessingException;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifDirectory;
 
+public class DealImageDao {
+	private String path = "g:/img/" ;
+	
 	/**
 	 * @param args
 	 * @throws IOException 
@@ -20,7 +27,7 @@ public class DealImageDao {
 		// TODO Auto-generated method stub
 		DealImageDao dao = new DealImageDao() ;
 		
-		File dir = new File("g:/img/") ;;
+		File dir = new File(dao.path) ;;
 		dao.dealFiles(dir) ;
 //		File file = new File("g:/img/IMG_20130922_102025.jpg") ;
 //		dao.dealImage(file) ;
@@ -59,15 +66,22 @@ public class DealImageDao {
 		int x = 10;
 		int y = 100;
 		String str = file.getName() ;
-		if(!str.matches("IMG_20(.*?)jpg")){
+		if(str.startsWith("deal")){
 			return ;
 		}
-		str = str.substring(4,19) ;	//IMG_20130922_102025
-		String name = file.getParentFile().getName() ;
-		String s = name+"_"+str.substring(0,8)+" "+ str.substring(9,11)+":"+str.substring(11,13)+":"+str.substring(13,15) ;
-		src = this.addMark(src, s , x, y) ;
+		
+		String text = file.getParentFile().getName() ;
+//		if(str.matches("IMG_20(.*?)jpg")){
+//			String name = str.substring(4,19) ;	//IMG_20130922_102025
+//			name = name.substring(0,8)+" "+ name.substring(9,11)+":"+name.substring(11,13)+":"+name.substring(13,15) ;
+//			text += "_"+name ;
+//		} else {
+//			
+//		}
+		text += " "+this.getPhotoDate(file) ;	//打印水印 标题+日期
+		src = this.addMark(src, text , x, y) ;
         
-		File outdir = new File(file.getParent()+"/"+str+".jpg") ;
+		File outdir = new File(path, "deal_"+str) ;
         ImageIO.write(src, "JPEG", outdir);// 输出到文件流
 	}
 	
@@ -80,9 +94,9 @@ public class DealImageDao {
 	 * @return
 	 */
 	private BufferedImage addMark(BufferedImage image, String text, int x, int y){
-		Color color = Color.cyan ;// Color.white ;	//水印的字体颜色
-        String fontName = "宋体";		//水印的字体名称
-		int fontStyle = Font.BOLD ;	//水印的字体样式
+		Color color = Color.black ;	// Color.white ;	//水印的字体颜色
+        String fontName = "隶书";		//水印的字体名称
+		int fontStyle = Font.ITALIC ;	//水印的字体样式
 		int fontSize = 100 ;			//水印的字体大小
         float alpha = 0.7f ;			//
         try {
@@ -105,5 +119,34 @@ public class DealImageDao {
             e.printStackTrace();
         }
 		return null;
+	}
+
+	/**
+	 * 获取照片拍摄时间
+	 * @param file
+	 * @return
+	 */
+	private String getPhotoDate(File file){
+		Metadata metadata;
+		try {
+			metadata = JpegMetadataReader.readMetadata(file);
+	        Directory exif = metadata.getDirectory(ExifDirectory.class);
+	        
+	        
+	        String model = exif.getString(ExifDirectory.TAG_DATETIME_ORIGINAL);
+	        System.out.println(model);
+//	        
+//	        Iterator tags = exif.getTagIterator();
+//	        while (tags.hasNext()) {
+//	        	
+//	            Tag tag = (Tag)tags.next();
+//	            System.out.println(tag);
+//	        }
+	        return model ;
+		} catch (JpegProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		return "" ;
 	}
 }
